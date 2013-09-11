@@ -43,7 +43,7 @@ class tsm::client::common {
         cwd     => '/opt/tivoli/tsm/client/ba/bin',
         path    => '/opt/tivoli/tsm/client/ba/bin',
         require => File['/opt/tivoli/tsm/client/ba/bin/dsm.sys'],
-        command => "./dsmc set password $tsmpassword $tsmpassword",
+        command => "./dsmc set password ${::tsmpassword} ${::tsmpassword}",
         onlyif  => './dsmc query session </dev/null | /bin/grep ^ANS1025E',
     }
 }
