@@ -34,16 +34,16 @@ class tsm::client::common {
         group   => root,
         mode    => '0644',
         require => File['/opt/tivoli/tsm/client/ba/bin/dsm.sys'],
-        source => 'puppet:///modules/tsmclient/dsmcad-paths.sh',
+        source  => 'puppet:///modules/tsmclient/dsmcad-paths.sh',
     }
 
     # Check TSM password is valid and update if not
 
     exec { 'store-password':
-        cwd         => '/opt/tivoli/tsm/client/ba/bin',
-        path        => '/opt/tivoli/tsm/client/ba/bin',
-        require     => File['/opt/tivoli/tsm/client/ba/bin/dsm.sys'],
-        command     => "./dsmc set password $tsmpassword $tsmpassword",
-        onlyif      => './dsmc query session </dev/null | /bin/grep ^ANS1025E',
+        cwd     => '/opt/tivoli/tsm/client/ba/bin',
+        path    => '/opt/tivoli/tsm/client/ba/bin',
+        require => File['/opt/tivoli/tsm/client/ba/bin/dsm.sys'],
+        command => "./dsmc set password $tsmpassword $tsmpassword",
+        onlyif  => './dsmc query session </dev/null | /bin/grep ^ANS1025E',
     }
 }
