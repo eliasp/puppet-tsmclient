@@ -1,0 +1,7 @@
+name 'puppet-tsmclient'
+version '0.0.1'
+author 'rdark'
+license ''
+summary 'Install and configure the Tivoli Storage Manager client.'
+project_page 'https://github.com/rdark/puppet-tsmclient'
+source 'https://github.com/rdark/puppet-tsmclient.git'
