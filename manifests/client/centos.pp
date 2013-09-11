@@ -60,6 +60,24 @@ class tsm::client::centos {
         default : {}
     } # case architecture
 
+    $tsm_client_requirements = $::architecture ? {
+        i386 => [
+            Package['TIVsm-API'],
+            Package['TIVsm-BA'],
+            File['/var/log/tsm'],
+            File['/opt/tivoli/tsm/client/ba/bin/dsm.opt'],
+            File['/opt/tivoli/tsm/client/ba/bin/dsm.sys']
+        ],
+        x86_64 => [
+            Package['TIVsm-API'],
+            Package['TIVsm-BA'],
+            Package['TIVsm-API64'],
+            File['/var/log/tsm'],
+            File['/opt/tivoli/tsm/client/ba/bin/dsm.opt'],
+            File['/opt/tivoli/tsm/client/ba/bin/dsm.sys']
+        ],
+    }
+
     file { 'tsm_client_init':
         ensure  => present,
         owner   => 'root',
@@ -67,22 +85,6 @@ class tsm::client::centos {
         mode    => '0755',
         path    => '/etc/init.d/dsmcad',
         source  => 'puppet:///modules/tsmclient/dsmcad-centos',
-        require => $::architecture ? {
-            i386 => [
-                Package['TIVsm-API'],
-                Package['TIVsm-BA'],
-                File['/var/log/tsm'],
-                File['/opt/tivoli/tsm/client/ba/bin/dsm.opt'],
-                File['/opt/tivoli/tsm/client/ba/bin/dsm.sys']
-            ],
-            x86_64 => [
-                Package['TIVsm-API'],
-                Package['TIVsm-BA'],
-                Package['TIVsm-API64'],
-                File['/var/log/tsm'],
-                File['/opt/tivoli/tsm/client/ba/bin/dsm.opt'],
-                File['/opt/tivoli/tsm/client/ba/bin/dsm.sys']
-            ],
-        },
+        require => $tsm_client_requirements,
     } # file
 } # class
