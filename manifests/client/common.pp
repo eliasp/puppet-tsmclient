@@ -41,7 +41,6 @@ class tsm::client::common {
     }
 
     # Check TSM password is valid and update if not
-
     exec { 'store-password':
         cwd     => '/opt/tivoli/tsm/client/ba/bin',
         path    => '/opt/tivoli/tsm/client/ba/bin',
