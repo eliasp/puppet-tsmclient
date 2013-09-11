@@ -1,0 +1,2 @@
+class tsm::client::ubuntu {
+}
