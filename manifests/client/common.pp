@@ -1,8 +1,8 @@
 class tsm::client::common {
 
     service { 'dsmcad':
-        subscribe   => [ File['/opt/tivoli/tsm/client/ba/bin/dsm.sys'], File['/opt/tivoli/tsm/client/ba/bin/dsm.opt'] ],
         ensure      => running,
+        subscribe   => [ File['/opt/tivoli/tsm/client/ba/bin/dsm.sys'], File['/opt/tivoli/tsm/client/ba/bin/dsm.opt'] ],
         enable      => true,
         pattern     => 'dsmcad',
     }
