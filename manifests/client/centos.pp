@@ -68,17 +68,21 @@ class tsm::client::centos {
         path    => '/etc/init.d/dsmcad',
         source  => 'puppet:///modules/tsmclient/dsmcad-centos',
         require => $::architecture ? {
-            i386 => [ Package['TIVsm-API'],
+            i386 => [
+                Package['TIVsm-API'],
                 Package['TIVsm-BA'],
                 File['/var/log/tsm'],
                 File['/opt/tivoli/tsm/client/ba/bin/dsm.opt'],
-                File['/opt/tivoli/tsm/client/ba/bin/dsm.sys'] ],
-            x86_64 => [ Package['TIVsm-API'],
+                File['/opt/tivoli/tsm/client/ba/bin/dsm.sys']
+            ],
+            x86_64 => [
+                Package['TIVsm-API'],
                 Package['TIVsm-BA'],
                 Package['TIVsm-API64'],
                 File['/var/log/tsm'],
                 File['/opt/tivoli/tsm/client/ba/bin/dsm.opt'],
-                File['/opt/tivoli/tsm/client/ba/bin/dsm.sys'] ],
-            },
+                File['/opt/tivoli/tsm/client/ba/bin/dsm.sys']
+            ],
+        },
     } # file
 } # class
