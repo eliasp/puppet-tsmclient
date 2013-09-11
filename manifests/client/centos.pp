@@ -18,10 +18,10 @@ class tsm::client::centos {
         ensure  => installed,
     }
     package { 'TIVsm-API':
-        ensure => latest,
+        ensure   => latest,
         provider => rpm,
-        source => 'http://puppet.example.co.uk/files/tsmclient/TIVsm-API.i386.rpm',
-        require => [
+        source   => 'http://puppet.example.co.uk/files/tsmclient/TIVsm-API.i386.rpm',
+        require  => [
             Package['gskcrypt32'],
             Package['libstdc++'],
             Package['compat-libstdc++-33']
