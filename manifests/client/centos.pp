@@ -49,7 +49,8 @@ class tsm::client::centos {
                 source => 'http://puppet.example.co.uk/files/tsmclient/TIVsm-API64.i386.rpm',
                 require => [ Package['gskcrypt64'], Package['TIVsm-API'] ],
             }
-        }
+        },
+        default : {}
     } # case architecture
 
     file { 'tsm_client_init':
