@@ -64,7 +64,7 @@ class tsm::client::centos {
         ensure  => present,
         owner   => 'root',
         group   => 'root',
-        mode    => '755',
+        mode    => '0755',
         path    => '/etc/init.d/dsmcad',
         source  => 'puppet:///modules/tsmclient/dsmcad-centos',
         require => $::architecture ? {
