@@ -33,7 +33,7 @@ class tsm::client::centos {
         source   => 'http://puppet.example.co.uk/files/tsmclient/TIVsm-BA.i386.rpm',
         require  => Package['TIVsm-API'],
     }
-    # 64 bit architecture requires that you install all of the 32 bit components first..
+    # 64 bit architecture requires that you install all of the 32 bit components first.
     case $::architecture {
         x86_64 : {
             package { 'gskcrypt64':
@@ -51,7 +51,10 @@ class tsm::client::centos {
                 ensure   => latest,
                 provider => rpm,
                 source   => 'http://puppet.example.co.uk/files/tsmclient/TIVsm-API64.i386.rpm',
-                require  => [ Package['gskcrypt64'], Package['TIVsm-API'] ],
+                require  => [
+                    Package['gskcrypt64'],
+                    Package['TIVsm-API']
+                ],
             }
         }
         default : {}
