@@ -11,10 +11,7 @@ class tsm::client::centos {
         source      => 'http://puppet.example.co.uk/files/tsmclient/gskssl32-8.0.13.3.linux.x86.rpm',
         require     => Package['gskcrypt32'],
     }
-    package { 'libstdc++':
-        ensure  => installed,
-    }
-    package { 'compat-libstdc++-33':
+    package { ['libstdc++', 'compat-libstdc++-33']:
         ensure  => installed,
     }
     package { 'TIVsm-API':
