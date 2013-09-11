@@ -1,6 +1,6 @@
 # Class for tsm clients
 class tsm::client {
-    case $operatingsystem {
+    case $::operatingsystem {
         /CentOS|Redhat/ : { include tsm::client::centos }
         /Ubuntu/ : { include tsm::client::ubuntu }
         default : {}
@@ -40,7 +40,7 @@ class tsm::client::centos {
         require => Package["TIVsm-API"],
     }
     # 64 bit architecture requires that you install all of the 32 bit components first..
-    case $architecture {
+    case $::architecture {
         x86_64 : {
             package { "gskcrypt64":
                 ensure      => latest,
@@ -69,7 +69,7 @@ class tsm::client::centos {
         mode    => "755",
         path    => "/etc/init.d/dsmcad",
         source  => "puppet:///modules/tsmclient/dsmcad-centos",
-        require => $architecture ? {
+        require => $::architecture ? {
             i386 => [ Package["TIVsm-API"],
                 Package["TIVsm-BA"],
                 File["/var/log/tsm"],
