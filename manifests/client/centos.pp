@@ -48,10 +48,10 @@ class tsm::client::centos {
                 require     => Package['gskcrypt64'],
             }
             package { 'TIVsm-API64':
-                ensure => latest,
+                ensure   => latest,
                 provider => rpm,
-                source => 'http://puppet.example.co.uk/files/tsmclient/TIVsm-API64.i386.rpm',
-                require => [ Package['gskcrypt64'], Package['TIVsm-API'] ],
+                source   => 'http://puppet.example.co.uk/files/tsmclient/TIVsm-API64.i386.rpm',
+                require  => [ Package['gskcrypt64'], Package['TIVsm-API'] ],
             }
         }
         default : {}
