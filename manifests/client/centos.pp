@@ -28,10 +28,10 @@ class tsm::client::centos {
         ],
     }
     package { 'TIVsm-BA':
-        ensure => latest,
+        ensure   => latest,
         provider => rpm,
-        source => 'http://puppet.example.co.uk/files/tsmclient/TIVsm-BA.i386.rpm',
-        require => Package['TIVsm-API'],
+        source   => 'http://puppet.example.co.uk/files/tsmclient/TIVsm-BA.i386.rpm',
+        require  => Package['TIVsm-API'],
     }
     # 64 bit architecture requires that you install all of the 32 bit components first..
     case $::architecture {
