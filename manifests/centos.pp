@@ -1,4 +1,4 @@
-class tsm::client::centos {
+class tsmclient::centos {
 
     package { 'gskcrypt32':
         ensure      => latest,

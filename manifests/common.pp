@@ -1,4 +1,4 @@
-class tsm::client::common {
+class tsmclient::common {
 
     service { 'dsmcad':
         ensure      => running,
