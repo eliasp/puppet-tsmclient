@@ -5,14 +5,14 @@ class tsmclient::params {
     $clientport    = '1500'
     $nodename      = $::fqdn
     $excludes      = {
-        'fs'    => ['/.../'],
-        'dir'   => [
+        fs   => ['/.../'],
+        dir  => [
             '/.../',
             '/opt/tivoli/tsm/.../',
         ],
-        'list'  => ['/.../'],
+        list => ['/.../'],
     }
     $includes      = {
-        'list' => [],
+        list => [],
     }
 }
