@@ -26,18 +26,14 @@ schedlogname /var/log/tsm/dsmsched.log
 schedlogretention 14 D
 
 * Excludes
-<% scope['tsmclient::excludes'][fs].each do |fs| %>
-exclude.fs "<%= fs %>"
+<% scope['tsmclient::excludes'].each_pair do |key, value| %>
+  <% if key == /(fs|dir)/ %>
+exclude.<%= key %> "<%= value %>"
+  <% elsif key == "list" %>
+exclude "<%= value %>"
+  <% end %>
 <% end %>
 
-<% scope['tsmclient::excludes'][dir].each do |dir| %>
-exclude.dir "<%= dir %>"
-<% end %>
-
-<% scope['tsmclient::excludes'][list].each do |item| %>
-exclude "<%= item %>"
-<% end %>
-
-<% scope['tsmclient::includes'][list].each do |item| %>
-include "<%= item %>"
+<% scope['tsmclient::includes'].each_pair do |key, value| %>
+include "<%= value %>"
 <% end %>
