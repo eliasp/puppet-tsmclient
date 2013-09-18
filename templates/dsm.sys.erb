@@ -26,7 +26,18 @@ schedlogname /var/log/tsm/dsmsched.log
 schedlogretention 14 D
 
 * Excludes
-EXCLUDE.DIR "/var/log/"
-EXCLUDE.DIR "/mnt/"
-EXCLUDE.DIR "/net/"
-EXCLUDE.DIR "/var/cache/"
+<% excludes.fs.each do |fs| %>
+exclude.fs "<%= fs %>"
+<% end %>
+
+<% excludes.dir.each do |dir| %>
+exclude.dir "<%= dir %>"
+<% end %>
+
+<% excludes.list.each do |item| %>
+exclude "<%= item %>"
+<% end %>
+
+<% includes.list.each do |item| %>
+include "<%= item %>"
+<% end %>
