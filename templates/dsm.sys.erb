@@ -9,11 +9,12 @@
 * Purpose: Main TSM Client Configuration (dsm.sys)       *
 **********************************************************
 
-Servername        <%= ::hostname %>
+Servername        <%= servername %>
 COMMMethod        TCPip
 TCPPort           <%= tsmport %>
 TCPServeraddress  <%= tsmserver %>
-nodename          <%= ::hostname %>
+TCPClientport     <%= clientport %>
+nodename          <%= nodename %>
 managedservices   schedule
 passwordaccess    generate
 
