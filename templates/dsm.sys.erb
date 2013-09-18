@@ -25,26 +25,26 @@ errorlogretention 14 D
 schedlogname /var/log/tsm/dsmsched.log
 schedlogretention 14 D
 
-<% scope['tsmclient::excludes'].each_pair do |key, value| %>
-  <% unless key == "list" %>
-    <% value.each do |entry| %>
+<% scope['tsmclient::excludes'].each_pair do |key, value| -%>
+  <% unless key == "list" -%>
+    <% value.each do |entry| -%>
 exclude.<%= key %> "<%= entry %>"
-    <% end %>
-  <% else %>
-    <% value.each do |entry| %>
+    <% end -%>
+  <% else -%>
+    <% value.each do |entry| -%>
 exclude "<%= entry %>"
-    <% end %>
-  <% end %>
-<% end %>
+    <% end -%>
+  <% end -%>
+<% end -%>
 
-<% scope['tsmclient::includes'].each_pair do |key, value| %>
-  <% unless key == "list" %>
-    <% value.each do |entry| %>
+<% scope['tsmclient::includes'].each_pair do |key, value| -%>
+  <% unless key == "list" -%>
+    <% value.each do |entry| -%>
 exclude.<%= key %> "<%= entry %>"
-    <% end %>
-  <% else %>
-    <% value.each do |entry| %>
+    <% end -%>
+  <% else -%>
+    <% value.each do |entry| -%>
 exclude "<%= entry %>"
-    <% end %>
-  <% end %>
-<% end %>
+    <% end -%>
+  <% end -%>
+<% end -%>
