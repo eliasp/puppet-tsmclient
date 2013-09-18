@@ -2,21 +2,17 @@ class tsmclient::params {
     $servername    = $::fqdn
     $serverport    = '1500'
     $serveraddress = ''
-    $clientport    = ''
+    $clientport    = '1500'
     $nodename      = $::fqdn
-    $hostname      = $::fqdn
-    $tsmport       = '1500'
-    $tsmserver     = ''
-    $hostname      = ''
-    $exclude       = {
+    $excludes      = {
         'fs'    => ['/.../'],
         'dir'   => [
             '/.../',
             '/opt/tivoli/tsm/.../',
         ],
-        'items' => ['/.../'],
+        'list'  => ['/.../'],
     }
-    $include       = {
-        'items' => [],
+    $includes      = {
+        'list' => [],
     }
 }
