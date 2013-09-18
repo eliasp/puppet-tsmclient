@@ -11,10 +11,10 @@
 
 Servername        <%= servername %>
 COMMMethod        TCPip
-TCPPort           <%= serverport %>
-TCPServeraddress  <%= serveraddress %>
-TCPClientport     <%= clientport %>
-nodename          <%= nodename %>
+TCPPort           <%= scope['tsmclient::serverport'] %>
+TCPServeraddress  <%= scope['tsmclient::serveraddress'] %>
+TCPClientport     <%= scope['tsmclient::clientport'] %>
+nodename          <%= scope['tsmclient::nodename'] %>
 managedservices   schedule
 passwordaccess    generate
 
@@ -26,18 +26,18 @@ schedlogname /var/log/tsm/dsmsched.log
 schedlogretention 14 D
 
 * Excludes
-<% excludes.fs.each do |fs| %>
+<% scope['tsmclient::excludes'].fs.each do |fs| %>
 exclude.fs "<%= fs %>"
 <% end %>
 
-<% excludes.dir.each do |dir| %>
+<% scope['tsmclient::excludes'].dir.each do |dir| %>
 exclude.dir "<%= dir %>"
 <% end %>
 
-<% excludes.list.each do |item| %>
+<% scope['tsmclient::excludes'].list.each do |item| %>
 exclude "<%= item %>"
 <% end %>
 
-<% includes.list.each do |item| %>
+<% scope['tsmclient::includes'].list.each do |item| %>
 include "<%= item %>"
 <% end %>
