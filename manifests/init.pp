@@ -7,7 +7,7 @@ class tsmclient (
     case $::operatingsystem {
         /CentOS|Redhat/ : { include tsmclient::centos }
         /Ubuntu/ : { include tsmclient::ubuntu }
-        default : {}
+        default : { fail("This module doesn't support ${::operatingsystem} yet.") }
     }
     include tsmclient::common
 }
